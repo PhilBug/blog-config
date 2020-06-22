@@ -3,6 +3,8 @@ services:
 
   ghost:
     image: ghost:3.20.2-alpine
+    container_name: ghost
+    hostname: ghost
     restart: always
     depends_on:
       - db
@@ -18,6 +20,8 @@ services:
 
   db:
     image: mysql:5.7.30
+    container_name: db
+    hostname: db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
@@ -25,9 +29,9 @@ services:
       - mysql:/var/lib/mysql
 
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
+    build: .
+    container_name: nginx
+    hostname: nginx
     restart: always
     depends_on:
       - ghost
@@ -37,6 +41,5 @@ services:
     volumes:
       - /etc/letsencrypt/:/etc/letsencrypt/
       - /usr/share/nginx/html:/usr/share/nginx/html
-
 volumes:
   mysql:
