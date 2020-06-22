@@ -22,7 +22,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
     volumes:
-      - /opt/ghost_mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
 
   nginx:
     build:
@@ -37,3 +37,6 @@ services:
     volumes:
       - /etc/letsencrypt/:/etc/letsencrypt/
       - /usr/share/nginx/html:/usr/share/nginx/html
+
+volumes:
+  mysql:
