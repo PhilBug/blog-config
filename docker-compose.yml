@@ -2,7 +2,7 @@ version: '3'
 services:
 
   ghost:
-    image: ghost:3.20.2-alpine
+    image: ghost:3.26.0-alpine
     container_name: ghost
     hostname: ghost
     restart: always
@@ -19,7 +19,7 @@ services:
       - /opt/ghost_content:/var/lib/ghost/content
 
   db:
-    image: mysql:5.7.30
+    image: mysql:5.7.31
     container_name: db
     hostname: db
     restart: always
